@@ -256,7 +256,8 @@ class BishopFoxConnector(BaseConnector):
 
     def _build_container_json(self, finding):
         label = self.get_config().get("ingest", {}).get("container_label")
-        severity = consts.SEVERITY_MAP[finding["severity"]]
+        finding_severity = finding["severity"].capitalize()
+        severity = consts.SEVERITY_MAP[finding_severity]
         container_json = {
             "name": finding.get("category"),
             "label": label,
