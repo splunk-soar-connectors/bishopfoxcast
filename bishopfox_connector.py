@@ -1,6 +1,6 @@
 # File: bishopfox_connector.py
 #
-# Copyright (c) 2021 Splunk Inc.
+# Copyright (c) 2023 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,23 +17,23 @@
 # Python 3 Compatibility imports
 from __future__ import print_function, unicode_literals
 
+import json
+import sys
+from datetime import datetime
+from urllib.parse import unquote
+
+import dateutil.parser
 # Phantom App imports
 import phantom.app as phantom
-from phantom.base_connector import BaseConnector
+import requests
+from bs4 import BeautifulSoup
 from phantom.action_result import ActionResult
+from phantom.base_connector import BaseConnector
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 # Usage of the consts file is recommended
 import bishopfox_consts as consts
-import requests
-import json
-from bs4 import BeautifulSoup
-
-import dateutil.parser
-from datetime import datetime
-
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-from urllib.parse import unquote
 
 
 class RetVal(tuple):
@@ -157,7 +157,7 @@ class BishopFoxConnector(BaseConnector):
                 elif len(e.args) == 1:
                     error_code = consts.ERR_CODE_MSG
                     error_msg = e.args[0]
-        except:
+        except Exception:
             pass
 
         return "Error Code: {0}. Error Message: {1}".format(error_code, error_msg)
@@ -288,7 +288,7 @@ class BishopFoxConnector(BaseConnector):
             # the 'since' parameter does not include time information, only the date
             try:
                 params["since"] = dateutil.parser.isoparse(kwargs["since"]).strftime("%Y-%m-%d")
-            except:
+            except Exception:
                 error_message = "Please provide a valid 'since' action parameter"
                 return RetVal(action_result.set_status(phantom.APP_ERROR, error_message), None)
         if kwargs.get("status"):
@@ -357,6 +357,8 @@ class BishopFoxConnector(BaseConnector):
             # action failed, this should already be captured in the action result
             return action_result.get_status()
 
+        self.save_progress(f"Total findings: {len(findings)}")
+
         # Add the response into the data section
         action_result.add_data(findings)
 
@@ -398,6 +400,8 @@ class BishopFoxConnector(BaseConnector):
             # the call to the 3rd party device or service failed, action result should contain all the error details
             return action_result.get_status()
 
+        self.save_progress("Successfully updated status")
+
         # Add the response into the data section
         data = [self._parse_subject_json(subj, finding_uid) for subj in response]
         action_result.add_data(data)
@@ -432,6 +436,8 @@ class BishopFoxConnector(BaseConnector):
             # the call to the 3rd party device or service failed, action result should contain all the error details
             return action_result.get_status()
 
+        self.save_progress("Successfully updated client ID")
+
         # Add the response into the data section
         data = [self._parse_subject_json(subj, finding_uid) for subj in response]
         action_result.add_data(data)
@@ -465,6 +471,8 @@ class BishopFoxConnector(BaseConnector):
         if phantom.is_fail(ret_val):
             # the call to the 3rd party device or service failed, action result should contain all the error details
             return action_result.get_status()
+
+        self.save_progress("Successfully updated client note")
 
         # Add the response into the data section
         data = [self._parse_subject_json(subj, finding_uid) for subj in response]
@@ -593,8 +601,9 @@ class BishopFoxConnector(BaseConnector):
 
 
 def main():
-    import pudb
     import argparse
+
+    import pudb
 
     pudb.set_trace()
 
@@ -638,7 +647,7 @@ def main():
             session_id = r2.cookies["sessionid"]
         except Exception as e:
             print("Unable to get session id from the platform. Error: " + str(e))
-            exit(1)
+            sys.exit(1)
 
     with open(args.input_test_json) as f:
         in_json = f.read()
@@ -655,7 +664,7 @@ def main():
         ret_val = connector._handle_action(json.dumps(in_json), None)
         print(json.dumps(json.loads(ret_val), indent=4))
 
-    exit(0)
+    sys.exit(0)
 
 
 if __name__ == "__main__":
