@@ -2,11 +2,11 @@
 # Bishop Fox CAST
 
 Publisher: Splunk Community  
-Connector Version: 1\.0\.1  
+Connector Version: 1\.1\.0  
 Product Vendor: Bishop Fox  
 Product Name: CAST  
 Product Version Supported (regex): "\.\*"  
-Minimum Product Version: 4\.9\.39220  
+Minimum Product Version: 5\.4\.0  
 
 This app works with the Bishop Fox Continuous Attack Surface Testing \(CAST\) API to ingest and manage CAST findings
 
@@ -19,8 +19,8 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 **verify\_server\_cert** |  required  | boolean | Verify Server Certificate
 **auth\_token\_url** |  required  | string | Auth Token URL
 **org\_id** |  required  | string | Organization ID
-**api\_key** |  required  | password | API Key \(client id\)
-**api\_secret** |  required  | password | API Secret \(client secret\)
+**api\_key** |  required  | password | API Key \(Client ID\)
+**api\_secret** |  required  | password | API Secret \(Client Secret\)
 
 ### Supported Actions  
 [test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration  
@@ -59,40 +59,40 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **client\_id** |  optional  | Used to search for a finding using the client defined identifier for a finding | string |  `bishopfox client id` 
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.finding\_uid | string |  `bishopfox finding uid` 
-action\_result\.parameter\.subject\_uid | string |  `bishopfox subject uid` 
-action\_result\.parameter\.since | string | 
-action\_result\.parameter\.status | string |  `bishopfox status` 
-action\_result\.parameter\.severity | string |  `bishopfox severity` 
-action\_result\.parameter\.client\_id | string |  `bishopfox client id` 
-action\_result\.data\.\*\.category | string | 
-action\_result\.data\.\*\.clientId | string |  `bishopfox client id` 
-action\_result\.data\.\*\.clientNote | string | 
-action\_result\.data\.\*\.createdAt | string | 
-action\_result\.data\.\*\.definition | string | 
-action\_result\.data\.\*\.details | string | 
-action\_result\.data\.\*\.findingId | string |  `bishopfox finding id` 
-action\_result\.data\.\*\.findingUid | string |  `bishopfox finding uid` 
-action\_result\.data\.\*\.orgUid | string |  `bishopfox org id` 
-action\_result\.data\.\*\.recommendations | string | 
-action\_result\.data\.\*\.remediatedAt | string | 
-action\_result\.data\.\*\.remediatedDays | numeric | 
-action\_result\.data\.\*\.report | string | 
-action\_result\.data\.\*\.resources | string | 
-action\_result\.data\.\*\.severity | string |  `bishopfox severity` 
-action\_result\.data\.\*\.status | string |  `bishopfox status` 
-action\_result\.data\.\*\.subject | string |  `bishopfox subject` 
-action\_result\.data\.\*\.subjectUid | string |  `bishopfox subject uid` 
-action\_result\.data\.\*\.target | string |  `bishopfox target` 
-action\_result\.data\.\*\.updatedAt | string | 
-action\_result\.data\.\*\.reportedAt | string | 
-action\_result\.status | string | 
-action\_result\.message | string | 
-action\_result\.summary\.total\_findings | numeric | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action\_result\.parameter\.finding\_uid | string |  `bishopfox finding uid`  |  
+action\_result\.parameter\.subject\_uid | string |  `bishopfox subject uid`  |  
+action\_result\.parameter\.since | string |  |  
+action\_result\.parameter\.status | string |  `bishopfox status`  |  
+action\_result\.parameter\.severity | string |  `bishopfox severity`  |  
+action\_result\.parameter\.client\_id | string |  `bishopfox client id`  |  
+action\_result\.data\.\*\.category | string |  |  
+action\_result\.data\.\*\.clientId | string |  `bishopfox client id`  |  
+action\_result\.data\.\*\.clientNote | string |  |  
+action\_result\.data\.\*\.createdAt | string |  |  
+action\_result\.data\.\*\.definition | string |  |  
+action\_result\.data\.\*\.details | string |  |  
+action\_result\.data\.\*\.findingId | string |  `bishopfox finding id`  |  
+action\_result\.data\.\*\.findingUid | string |  `bishopfox finding uid`  |  
+action\_result\.data\.\*\.orgUid | string |  `bishopfox org id`  |  
+action\_result\.data\.\*\.recommendations | string |  |  
+action\_result\.data\.\*\.remediatedAt | string |  |  
+action\_result\.data\.\*\.remediatedDays | numeric |  |  
+action\_result\.data\.\*\.report | string |  |  
+action\_result\.data\.\*\.resources | string |  |  
+action\_result\.data\.\*\.severity | string |  `bishopfox severity`  |  
+action\_result\.data\.\*\.status | string |  `bishopfox status`  |  
+action\_result\.data\.\*\.subject | string |  `bishopfox subject`  |  
+action\_result\.data\.\*\.subjectUid | string |  `bishopfox subject uid`  |  
+action\_result\.data\.\*\.target | string |  `bishopfox target`  |  
+action\_result\.data\.\*\.updatedAt | string |  |  
+action\_result\.data\.\*\.reportedAt | string |  |  
+action\_result\.status | string |  |  
+action\_result\.message | string |  |  
+action\_result\.summary\.total\_findings | numeric |  |  
+summary\.total\_objects | numeric |  |   1 
+summary\.total\_objects\_successful | numeric |  |   1   
 
 ## action: 'update status'
 Sets a findings's status
@@ -110,27 +110,27 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **status** |  required  | Status to set | string |  `bishopfox status` 
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.finding\_uid | string |  `bishopfox finding uid` 
-action\_result\.parameter\.subject\_uid | string |  `bishopfox subject uid` 
-action\_result\.parameter\.status | string |  `bishopfox status` 
-action\_result\.data\.\*\.clientNote | string | 
-action\_result\.data\.\*\.createdAt | string | 
-action\_result\.data\.\*\.findingUid | string |  `bishopfox finding uid` 
-action\_result\.data\.\*\.remediatedAt | string | 
-action\_result\.data\.\*\.remediatedDays | numeric | 
-action\_result\.data\.\*\.status | string |  `bishopfox status` 
-action\_result\.data\.\*\.subject | string |  `bishopfox subject` 
-action\_result\.data\.\*\.subjectUid | string |  `bishopfox subject uid` 
-action\_result\.data\.\*\.target | string |  `bishopfox target` 
-action\_result\.data\.\*\.updatedAt | string | 
-action\_result\.data\.\*\.clientId | string |  `bishopfox client id` 
-action\_result\.status | string | 
-action\_result\.message | string | 
-action\_result\.summary | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action\_result\.parameter\.finding\_uid | string |  `bishopfox finding uid`  |  
+action\_result\.parameter\.subject\_uid | string |  `bishopfox subject uid`  |  
+action\_result\.parameter\.status | string |  `bishopfox status`  |  
+action\_result\.data\.\*\.clientNote | string |  |  
+action\_result\.data\.\*\.createdAt | string |  |  
+action\_result\.data\.\*\.findingUid | string |  `bishopfox finding uid`  |  
+action\_result\.data\.\*\.remediatedAt | string |  |  
+action\_result\.data\.\*\.remediatedDays | numeric |  |  
+action\_result\.data\.\*\.status | string |  `bishopfox status`  |  
+action\_result\.data\.\*\.subject | string |  `bishopfox subject`  |  
+action\_result\.data\.\*\.subjectUid | string |  `bishopfox subject uid`  |  
+action\_result\.data\.\*\.target | string |  `bishopfox target`  |  
+action\_result\.data\.\*\.updatedAt | string |  |  
+action\_result\.data\.\*\.clientId | string |  `bishopfox client id`  |  
+action\_result\.status | string |  |  
+action\_result\.message | string |  |  
+action\_result\.summary | string |  |  
+summary\.total\_objects | numeric |  |   1 
+summary\.total\_objects\_successful | numeric |  |   1   
 
 ## action: 'update client id'
 Updates a finding's clientId
@@ -148,27 +148,27 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **client\_id** |  required  | ClientID to set | string |  `bishopfox client id` 
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.finding\_uid | string |  `bishopfox finding uid` 
-action\_result\.parameter\.subject\_uid | string |  `bishopfox subject uid` 
-action\_result\.parameter\.client\_id | string |  `bishopfox client id` 
-action\_result\.data\.\*\.clientId | string |  `bishopfox client id` 
-action\_result\.data\.\*\.clientNote | string | 
-action\_result\.data\.\*\.createdAt | string | 
-action\_result\.data\.\*\.findingUid | string |  `bishopfox finding uid` 
-action\_result\.data\.\*\.remediatedAt | string | 
-action\_result\.data\.\*\.remediatedDays | numeric | 
-action\_result\.data\.\*\.status | string |  `bishopfox status` 
-action\_result\.data\.\*\.subject | string |  `bishopfox subject` 
-action\_result\.data\.\*\.subjectUid | string |  `bishopfox subject uid` 
-action\_result\.data\.\*\.target | string |  `bishopfox target` 
-action\_result\.data\.\*\.updatedAt | string | 
-action\_result\.status | string | 
-action\_result\.message | string | 
-action\_result\.summary | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action\_result\.parameter\.finding\_uid | string |  `bishopfox finding uid`  |  
+action\_result\.parameter\.subject\_uid | string |  `bishopfox subject uid`  |  
+action\_result\.parameter\.client\_id | string |  `bishopfox client id`  |  
+action\_result\.data\.\*\.clientId | string |  `bishopfox client id`  |  
+action\_result\.data\.\*\.clientNote | string |  |  
+action\_result\.data\.\*\.createdAt | string |  |  
+action\_result\.data\.\*\.findingUid | string |  `bishopfox finding uid`  |  
+action\_result\.data\.\*\.remediatedAt | string |  |  
+action\_result\.data\.\*\.remediatedDays | numeric |  |  
+action\_result\.data\.\*\.status | string |  `bishopfox status`  |  
+action\_result\.data\.\*\.subject | string |  `bishopfox subject`  |  
+action\_result\.data\.\*\.subjectUid | string |  `bishopfox subject uid`  |  
+action\_result\.data\.\*\.target | string |  `bishopfox target`  |  
+action\_result\.data\.\*\.updatedAt | string |  |  
+action\_result\.status | string |  |  
+action\_result\.message | string |  |  
+action\_result\.summary | string |  |  
+summary\.total\_objects | numeric |  |   1 
+summary\.total\_objects\_successful | numeric |  |   1   
 
 ## action: 'update client note'
 Updates a finding's client note
@@ -186,27 +186,27 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **client\_note** |  required  | Client note to set | string |  `bishopfox client note` 
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.finding\_uid | string |  `bishopfox finding uid` 
-action\_result\.parameter\.subject\_uid | string |  `bishopfox subject uid` 
-action\_result\.parameter\.client\_note | string |  `bishopfox client note` 
-action\_result\.data\.\*\.clientId | string |  `bishopfox client id` 
-action\_result\.data\.\*\.clientNote | string | 
-action\_result\.data\.\*\.createdAt | string | 
-action\_result\.data\.\*\.findingUid | string |  `bishopfox finding uid` 
-action\_result\.data\.\*\.remediatedAt | string | 
-action\_result\.data\.\*\.remediatedDays | numeric | 
-action\_result\.data\.\*\.status | string |  `bishopfox status` 
-action\_result\.data\.\*\.subject | string |  `bishopfox subject` 
-action\_result\.data\.\*\.subjectUid | string |  `bishopfox subject uid` 
-action\_result\.data\.\*\.target | string |  `bishopfox target` 
-action\_result\.data\.\*\.updatedAt | string | 
-action\_result\.status | string | 
-action\_result\.message | string | 
-action\_result\.summary | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action\_result\.parameter\.finding\_uid | string |  `bishopfox finding uid`  |  
+action\_result\.parameter\.subject\_uid | string |  `bishopfox subject uid`  |  
+action\_result\.parameter\.client\_note | string |  `bishopfox client note`  |  
+action\_result\.data\.\*\.clientId | string |  `bishopfox client id`  |  
+action\_result\.data\.\*\.clientNote | string |  |  
+action\_result\.data\.\*\.createdAt | string |  |  
+action\_result\.data\.\*\.findingUid | string |  `bishopfox finding uid`  |  
+action\_result\.data\.\*\.remediatedAt | string |  |  
+action\_result\.data\.\*\.remediatedDays | numeric |  |  
+action\_result\.data\.\*\.status | string |  `bishopfox status`  |  
+action\_result\.data\.\*\.subject | string |  `bishopfox subject`  |  
+action\_result\.data\.\*\.subjectUid | string |  `bishopfox subject uid`  |  
+action\_result\.data\.\*\.target | string |  `bishopfox target`  |  
+action\_result\.data\.\*\.updatedAt | string |  |  
+action\_result\.status | string |  |  
+action\_result\.message | string |  |  
+action\_result\.summary | string |  |  
+summary\.total\_objects | numeric |  |   1 
+summary\.total\_objects\_successful | numeric |  |   1   
 
 ## action: 'on poll'
 Ingest findings from Bishop Fox
@@ -214,7 +214,7 @@ Ingest findings from Bishop Fox
 Type: **ingest**  
 Read only: **True**
 
-This ingesting findings from Bishop Fox CAST into containers in Phantom\.
+This ingesting findings from Bishop Fox CAST into containers in Splunk SOAR\.
 
 #### Action Parameters
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
