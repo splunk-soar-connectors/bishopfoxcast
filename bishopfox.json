@@ -1,7 +1,7 @@
 {
     "appid": "e601640d-5e18-4e82-a3d6-fbd1e51a180c",
     "name": "Bishop Fox CAST",
-    "description": "This app works with the Bishop Fox Continuous Attack Surface Testing (CAST) API to ingest and manage CAST FIndings",
+    "description": "This app works with the Bishop Fox Continuous Attack Surface Testing (CAST) API to ingest and manage CAST findings",
     "type": "information",
     "product_vendor": "Bishop Fox",
     "product_name": "CAST",
@@ -10,7 +10,7 @@
     "python_version": "3",
     "product_version_regex": ".*",
     "publisher": "Splunk Community",
-    "license": "Copyright (c) 2023 Splunk Inc.",
+    "license": "Copyright (c) 2021-2023 Splunk Inc.",
     "app_version": "1.1.0",
     "utctime_updated": "2022-01-07T21:05:23.000000Z",
     "package_name": "phantom_bishopfox",

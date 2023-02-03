@@ -1,6 +1,6 @@
 # File: bishopfox_connector.py
 #
-# Copyright (c) 2023 Splunk Inc.
+# Copyright (c) 2021-2023 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@
 from __future__ import print_function, unicode_literals
 
 import json
-import sys
 from datetime import datetime
 from urllib.parse import unquote
 
@@ -602,6 +601,7 @@ class BishopFoxConnector(BaseConnector):
 
 def main():
     import argparse
+    import sys
 
     import pudb
 
