@@ -399,7 +399,7 @@ class BishopFoxConnector(BaseConnector):
             # the call to the 3rd party device or service failed, action result should contain all the error details
             return action_result.get_status()
 
-        self.save_progress("Successfully updated status")
+        self.save_progress("Successfully Updated Status")
 
         # Add the response into the data section
         data = [self._parse_subject_json(subj, finding_uid) for subj in response]
@@ -435,7 +435,7 @@ class BishopFoxConnector(BaseConnector):
             # the call to the 3rd party device or service failed, action result should contain all the error details
             return action_result.get_status()
 
-        self.save_progress("Successfully updated client ID")
+        self.save_progress("Successfully Updated Client ID")
 
         # Add the response into the data section
         data = [self._parse_subject_json(subj, finding_uid) for subj in response]
@@ -471,7 +471,7 @@ class BishopFoxConnector(BaseConnector):
             # the call to the 3rd party device or service failed, action result should contain all the error details
             return action_result.get_status()
 
-        self.save_progress("Successfully updated client note")
+        self.save_progress("Successfully Updated Client Note")
 
         # Add the response into the data section
         data = [self._parse_subject_json(subj, finding_uid) for subj in response]
