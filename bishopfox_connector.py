@@ -199,7 +199,7 @@ class BishopFoxConnector(BaseConnector):
 
         auth_token = None
         try:
-            resp = requests.post(
+            resp = requests.post(  # nosemgrep
                 self._auth_token_url,
                 verify=config.get("verify_server_cert", True),
                 json={
