@@ -1,7 +1,7 @@
 # Bishop Fox CAST
 
 Publisher: Splunk Community \
-Connector Version: 1.1.0 \
+Connector Version: 1.1.1 \
 Product Vendor: Bishop Fox \
 Product Name: CAST \
 Minimum Product Version: 5.4.0
