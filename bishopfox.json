@@ -7,7 +7,7 @@
     "product_name": "CAST",
     "logo": "logo_bishopfox.svg",
     "logo_dark": "logo_bishopfox_dark.svg",
-    "python_version": "3",
+    "python_version": ["3.9", "3.13"],
     "product_version_regex": ".*",
     "publisher": "Splunk Community",
     "license": "Copyright (c) 2021-2025 Splunk Inc.",
