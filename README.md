@@ -1,9 +1,9 @@
 # Bishop Fox CAST
 
-Publisher: Splunk Community \
-Connector Version: 1.1.1 \
-Product Vendor: Bishop Fox \
-Product Name: CAST \
+Publisher: Splunk Community <br>
+Connector Version: 1.1.1 <br>
+Product Vendor: Bishop Fox <br>
+Product Name: CAST <br>
 Minimum Product Version: 5.4.0
 
 This app works with the Bishop Fox Continuous Attack Surface Testing (CAST) API to ingest and manage CAST findings
@@ -23,18 +23,18 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 
 ### Supported Actions
 
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration \
-[get findings](#action-get-findings) - Get findings based on provided filters \
-[update status](#action-update-status) - Sets a findings's status \
-[update client id](#action-update-client-id) - Updates a finding's clientId \
-[update client note](#action-update-client-note) - Updates a finding's client note \
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration <br>
+[get findings](#action-get-findings) - Get findings based on provided filters <br>
+[update status](#action-update-status) - Sets a findings's status <br>
+[update client id](#action-update-client-id) - Updates a finding's clientId <br>
+[update client note](#action-update-client-note) - Updates a finding's client note <br>
 [on poll](#action-on-poll) - Ingest findings from Bishop Fox
 
 ## action: 'test connectivity'
 
 Validate the asset configuration for connectivity using supplied configuration
 
-Type: **test** \
+Type: **test** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -49,7 +49,7 @@ No Output
 
 Get findings based on provided filters
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -104,7 +104,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Sets a findings's status
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Sets an individual finding's status.
@@ -145,7 +145,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Updates a finding's clientId
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Sets an individual finding's ClientID. ClientID is an field that can be set to an identifier of your choice for easy access to a specific finding.
@@ -186,7 +186,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Updates a finding's client note
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Sets an individual finding's client note. The field 'clientNote' is for setting a note of your choice about this finding.
@@ -227,7 +227,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Ingest findings from Bishop Fox
 
-Type: **ingest** \
+Type: **ingest** <br>
 Read only: **True**
 
 This ingesting findings from Bishop Fox CAST into containers in Splunk SOAR.
@@ -250,7 +250,7 @@ ______________________________________________________________________
 
 Auto-generated Splunk SOAR Connector documentation.
 
-Copyright 2025 Splunk Inc.
+Copyright 2026 Splunk Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
