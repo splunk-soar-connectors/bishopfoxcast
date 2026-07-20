@@ -1,6 +1,6 @@
 # File: bishopfox_connector.py
 #
-# Copyright (c) 2021-2025 Splunk Inc.
+# Copyright (c) 2021-2026 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 # Python 3 Compatibility imports
 
 import json
+import urllib.parse as urlparse
 from datetime import datetime
 from urllib.parse import unquote
 
@@ -38,6 +39,11 @@ import bishopfox_consts as consts
 class RetVal(tuple):
     def __new__(cls, val1, val2=None):
         return tuple.__new__(RetVal, (val1, val2))
+
+
+def _quote_path_segment(value):
+    """Encode an action-supplied identifier as one URL path segment."""
+    return urlparse.quote(str(value), safe="").replace(".", "%2E")
 
 
 class BishopFoxConnector(BaseConnector):
@@ -364,7 +370,7 @@ class BishopFoxConnector(BaseConnector):
             err_msg = "Please provide a valid 'status' action parameter from the value list"
             return action_result.set_status(phantom.APP_ERROR, err_msg)
 
-        endpoint = f"/findings/{finding_uid}/subjects/{subject_uid}/status"
+        endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/status"
 
         data = {"status": consts.STATUS_CODES[status]}
 
@@ -393,7 +399,7 @@ class BishopFoxConnector(BaseConnector):
         subject_uid = param.get("subject_uid")
         client_id = param["client_id"]
 
-        endpoint = f"/findings/{finding_uid}/subjects/{subject_uid}/clientid"
+        endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/clientid"
 
         data = {"clientId": client_id}
 
@@ -422,7 +428,7 @@ class BishopFoxConnector(BaseConnector):
         subject_uid = param.get("subject_uid")
         client_note = param["client_note"]
 
-        endpoint = f"/findings/{finding_uid}/subjects/{subject_uid}/clientnote"
+        endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/clientnote"
 
         data = {"clientNote": client_note}
 
