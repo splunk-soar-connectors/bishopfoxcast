@@ -43,7 +43,10 @@ class RetVal(tuple):
 
 def _quote_path_segment(value):
     """Encode an action-supplied identifier as one URL path segment."""
-    return urlparse.quote(str(value), safe="").replace(".", "%2E")
+    value = str(value)
+    if value in {".", ".."}:
+        raise ValueError("Finding and subject identifiers cannot be dot path segments")
+    return urlparse.quote(value, safe="").replace(".", "%2E")
 
 
 class BishopFoxConnector(BaseConnector):
@@ -370,7 +373,10 @@ class BishopFoxConnector(BaseConnector):
             err_msg = "Please provide a valid 'status' action parameter from the value list"
             return action_result.set_status(phantom.APP_ERROR, err_msg)
 
-        endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/status"
+        try:
+            endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/status"
+        except ValueError as e:
+            return action_result.set_status(phantom.APP_ERROR, str(e))
 
         data = {"status": consts.STATUS_CODES[status]}
 
@@ -399,7 +405,10 @@ class BishopFoxConnector(BaseConnector):
         subject_uid = param.get("subject_uid")
         client_id = param["client_id"]
 
-        endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/clientid"
+        try:
+            endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/clientid"
+        except ValueError as e:
+            return action_result.set_status(phantom.APP_ERROR, str(e))
 
         data = {"clientId": client_id}
 
@@ -428,7 +437,10 @@ class BishopFoxConnector(BaseConnector):
         subject_uid = param.get("subject_uid")
         client_note = param["client_note"]
 
-        endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/clientnote"
+        try:
+            endpoint = f"/findings/{_quote_path_segment(finding_uid)}/subjects/{_quote_path_segment(subject_uid)}/clientnote"
+        except ValueError as e:
+            return action_result.set_status(phantom.APP_ERROR, str(e))
 
         data = {"clientNote": client_note}
 
